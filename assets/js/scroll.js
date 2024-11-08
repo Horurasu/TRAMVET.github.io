@@ -20,3 +20,5 @@ function smoothScrollTo(target, duration) {
    event.preventDefault();
    smoothScrollTo('top', 1000); // Cambia 1000 a la duración en milisegundos que desees
  });
+
+ 

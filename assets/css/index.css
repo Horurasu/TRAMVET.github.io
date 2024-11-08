@@ -450,8 +450,6 @@ header h6+p {
    background-color: rgb(255, 255, 255);
    padding: 2em 0;
    align-items: flex-start;
-   text-shadow: 2px 2px 4px rgba(210, 210, 210, 0.5), 0 0 10px rgba(180, 180, 180, 0.3), 0 0 15px rgba(181, 181, 181, 0.2);
-   box-shadow: 10px 10px 10px rgba(109, 109, 109, 0.1);
 
 
 }
@@ -465,12 +463,10 @@ header h6+p {
 
 }
 
-.thumbnails .box:hover {
-   transform: scale(1.1);
+.thumbnails .box p,
+.thumbnails .box .specific-class h3  {
+   text-align: left !important;
 }
-
-
-
 
 @media screen and (max-width: 1280px) {
 
@@ -821,10 +817,8 @@ input[type="radio"]+label:before {
 .box .inner h3,
 .box .inner p {
    color: black;
-   text-align: left;
    width: 100%;
    height: 100%;
-   text-align: center;
    padding: 0.2em;
 
 }
@@ -1975,8 +1969,8 @@ button.style3:active,
    -webkit-justify-content: center;
    -ms-justify-content: center;
    justify-content: center;
-   padding: 8em 4em 6em 4em;
-   min-height: 85vh;
+   padding: 0em 15em 0em 15em;
+   min-height: 90vh;
    background-image: url("../../images/banner2.jpg");
    background-position: center;
    background-size: cover;
@@ -1996,10 +1990,16 @@ button.style3:active,
 
 #banner h1 {
    color: #fff;
-   font-size: 5em;
+   font-size: 2.5em;
    font-weight: bold;
+   text-align: center;
    margin: 0;
+   margin: 0px 20% 0px 20%;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#banner h2 {
+   font-size: 1em;
 }
 
 #banner button a {
@@ -2010,31 +2010,56 @@ button.style3:active,
    border-bottom: none;
 }
 
+.botonesbaner{
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 2%;
+}
+
+
+.botonesbaner {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.5s ease-out, transform 0.9s ease-out;
+}
+
+.botonesbaner.fade-out {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95); /* Ajusta el valor según sea necesario */
+}
 
 #banner .buttonizq {
-   background-color: orange;
+   background-color: white;
    color: white !important;
    text-transform: capitalize;
-   height: 20%;
-   width: 20%;
+   height: 100%;
+   width: 15%;
 
 }
 
 #banner .buttonizq:hover {
-   transform: scale(0.95);
-   background-color: #ffaa75;
+   background-color: rgb(238, 238, 238);
 }
 
 #banner .buttonder {
-   background-color: white;
+   background-color: rgba(255, 255, 255, 0.154);
    text-transform: capitalize;
-   height: 20%;
-   width: 20%;
+   border: solid 3px white;
+   color: white !important;
+   height: 100%;
+   width: 15%;
+}
+
+#banner .buttonder a{
+   color: white;
 }
 
 #banner .buttonder:hover {
-   transform: scale(0.95);
-   background-color: #f2f2f2;
+   background-color: #ffffff6d;
 }
 
 #banner button {
@@ -2042,6 +2067,7 @@ button.style3:active,
    height: 10vh;
    margin-top: 1em;
    border: none;
+
 }
 
 @media screen and (max-width: 1099px) {
@@ -2083,14 +2109,6 @@ button.style3:active,
 
 
 }
-
-.banner-separacion {
-   width: 100vw;
-   display: flex;
-   flex-direction: row;
-   padding: 3em;
-}
-
 
 @media screen and (max-width: 1280px) {
    #banner h1 {
@@ -2155,20 +2173,55 @@ button.style3:active,
 
 }
 
-
+.banner-separacion {
+   width: 100vw;
+   display: flex;
+   flex-direction: column;
+   padding: 3em;
+   height: 100vh;
+}
 
 .bannerizq {
-   width: 70%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 40%;
+   margin-bottom: 6.5%;
    margin-left: 1em;
 }
 
+.bannerizq {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.bannerizq.fade-out {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95); /* Ajusta el valor según sea necesario */
+}
+
+
 .bannerder {
-   width: 30%;
+   width: 100%;
    display: flex;
    justify-content: center;
    justify-content: center;
    align-items: center;
 }
+
+.bannerder {
+   opacity: 1;
+   transform: translateY(0) scale(0.9);
+   transition: opacity 1.4s ease-out, transform 0.5s ease-out;
+ }
+ 
+ .bannerder.fade-out {
+   opacity: 0;
+   transform: translateY(20px) scale(0.95); /* Ajusta el valor según sea necesario */
+ }
 
 .scene {
    perspective: 800px;
@@ -2187,7 +2240,7 @@ button.style3:active,
    position: absolute;
    width: 200px;
    height: 200px;
-   background-color: #2748738f;
+   background-color: #0281ff24;
    border: 1px solid #ffffff;
    font-size: 24px;
    display: flex;
@@ -2432,26 +2485,6 @@ button.style3:active,
    overflow: hidden;
 }
 
-#banner:before {
-   -moz-transition: opacity 1s ease;
-   -webkit-transition: opacity 1s ease;
-   -ms-transition: opacity 1s ease;
-   transition: opacity 1s ease;
-   -moz-transition-delay: 0.1s;
-   -webkit-transition-delay: 1s;
-   -ms-transition-delay: 1s;
-   transition-delay: 0s;
-   content: '';
-   background-color: #42424f;
-   display: block;
-   height: 100%;
-   left: 0;
-   opacity: 0.45;
-   position: absolute;
-   top: 0;
-   width: 100%;
-   z-index: 1;
-}
 
 @media screen and (max-width: 1280px) {
 
@@ -2489,12 +2522,8 @@ body.is-loading #banner:before {
 /* Main */
 
 #main {
-   padding: 4em 0 2em 0;
-   background-color: #F2F2F2;
-
+   background-color: #ffffff;
 }
-
-
 
 @media screen and (max-width: 736px) {
 
