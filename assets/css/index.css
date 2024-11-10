@@ -114,8 +114,7 @@ section {
 }
 
 body {
-   line-height: 1;
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Georgia', sans-serif;
 }
 
 ol,
@@ -201,7 +200,6 @@ textarea {
    color: rgba(255, 255, 255, 0.75);
    font-size: 14pt;
    font-weight: 300;
-   line-height: 1.65;
 }
 
 @media screen and (max-width: 1680px) {
@@ -301,7 +299,6 @@ h5,
 h6 {
    color: #fff;
    font-weight: bold;
-   line-height: 1.5;
    margin: 0 0 1em 0;
 }
 
@@ -520,7 +517,7 @@ header h6+p {
    width: 150px;
    height: 150px;
    background-color: #2748738f;
-   border: 2px solid #ffffff;
+   border: 1px solid #ffffff;
 }
 
 .front {
@@ -1514,7 +1511,6 @@ li>a {
    display: block;
    padding: 10px 10px;
    text-decoration: none;
-   color: #000;
    font-weight: normal;
 }
 
@@ -1562,20 +1558,11 @@ li .dropdown li a:hover {
 }
 
 .navbar {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   flex-direction: row;
-   padding: 0em 2em;
-   background-color: #ffffff;
-   color: rgb(0, 0, 0);
-   position: sticky;
-   border-bottom: 1px solid #cecece;
-   top: 0;
-   z-index: 100;
-   gap: 1em;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
-
+  display: flex;
+  flex-direction: row;
+  color: white;
+  position: sticky;
+  top: 0;
 }
 
 .dropdown {
@@ -1619,7 +1606,6 @@ li .dropdown li a:hover {
 
    .dropdown .sub-menu {
       display: none;
-      background-color: red;
    }
 
    .dropdown>.menu-item>a {
@@ -1650,20 +1636,13 @@ li .dropdown li a:hover {
    flex-direction: column;
    justify-content: center;
    align-items: flex-start;
+  
 }
 
 .navbar-left h1 {
    margin: 0;
 }
 
-
-.navbar-right {
-   height: 100%;
-   display: flex;
-   align-items: space-between;
-   letter-spacing: 1.5px;
-   font-weight: normal;
-}
 
 .nav-links {
    list-style: none;
@@ -1695,9 +1674,7 @@ li .dropdown li a:hover {
 
 .navbar-left .nav-link {
    font-weight: bold;
-   letter-spacing: 10px;
    font-size: 2em;
-   color: #274873;
 }
 
 .navbar-left .nav-link-below {
@@ -1758,7 +1735,7 @@ a {
    margin: 4px 0;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
    .nav-links {
       display: none;
       position: absolute;
@@ -2240,7 +2217,7 @@ button.style3:active,
    position: absolute;
    width: 200px;
    height: 200px;
-   background-color: #0281ff24;
+   background-color: #43a1ff55;
    border: 1px solid #ffffff;
    font-size: 24px;
    display: flex;

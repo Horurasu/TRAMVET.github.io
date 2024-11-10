@@ -1,3 +1,4 @@
+// Función de desplazamiento suave
 function smoothScrollTo(target, duration) {
    const start = window.scrollY || document.documentElement.scrollTop;
    const startTime = performance.now();
@@ -14,11 +15,25 @@ function smoothScrollTo(target, duration) {
      }
    }
    requestAnimationFrame(scrollStep);
- }
+}
 
- document.getElementById('scrollTopButton').addEventListener('click', function(event) {
-   event.preventDefault();
-   smoothScrollTo('top', 1000); // Cambia 1000 a la duración en milisegundos que desees
- });
+// Agrega evento al botón para ir al tope
+const scrollButton = document.getElementById('scrollTopButton');
+if (scrollButton) {
+   scrollButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      smoothScrollTo('top', 1000); // Cambia 1000 a la duración en milisegundos que desees
+   });
+}
 
- 
+// Controlador para el menú de hamburguesa
+document.addEventListener('DOMContentLoaded', function () {
+   const hamburger = document.getElementById('hamburger');
+   const navLinks = document.querySelector('.nav-links');
+
+   if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+         navLinks.classList.toggle('active');
+      });
+   }
+});
