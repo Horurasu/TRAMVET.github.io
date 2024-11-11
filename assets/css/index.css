@@ -461,7 +461,7 @@ header h6+p {
 }
 
 .thumbnails .box p,
-.thumbnails .box .specific-class h3  {
+.thumbnails .box .specific-class h3 {
    text-align: left !important;
 }
 
@@ -1306,6 +1306,7 @@ button:hover,
 .button:hover {
    background-color: #274873ce;
    color: white !important;
+   
 }
 
 input[type="submit"]:active,
@@ -1500,6 +1501,7 @@ button.small,
    font-size: 1.5em;
    margin-top: 1em;
    flex-wrap: wrap;
+   
 }
 
 li {
@@ -1524,19 +1526,23 @@ li .dropdown {
    position: absolute;
    top: 100%;
    left: 0;
-   background-color: #fff;
+   background-color: #ffffff;
    padding: 0;
    margin: 0;
    list-style: none;
-   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+   box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.2);
+   width: auto; /* Ensure the dropdown width adjusts to its content */
+   min-width: max-content; /* Ensure the dropdown width is at least as wide as its content */
 }
-
 li .dropdown li a {
    display: block;
    padding: 10px 20px;
    text-decoration: none;
    color: #000;
+   background-color: white;
    white-space: nowrap;
+   width: auto;
+   min-width: max-content;
 }
 
 li:hover .dropdown {
@@ -1544,7 +1550,8 @@ li:hover .dropdown {
 }
 
 li .dropdown li a:hover {
-   background-color: #c7e1ff4c;
+   background-color: #4782be;
+   color: white;
 }
 
 @media (max-width: 1099px) {
@@ -1558,11 +1565,11 @@ li .dropdown li a:hover {
 }
 
 .navbar {
-  display: flex;
-  flex-direction: row;
-  color: white;
-  position: sticky;
-  top: 0;
+   display: flex;
+   flex-direction: row;
+   color: white;
+   position: sticky;
+   top: 0;
 }
 
 .dropdown {
@@ -1585,14 +1592,14 @@ li .dropdown li a:hover {
    background-color: #fff;
    padding: 10px;
    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-   min-width: 200px;
+   min-width: 300px;
    z-index: 1000;
    white-space: nowrap;
-   /* Evita el desbordamiento de texto */
 }
 
 .menu-item:hover .sub-menu {
    display: block;
+   background-color: #002a54;;
 }
 
 @media (max-width: 1200px) {
@@ -1636,7 +1643,7 @@ li .dropdown li a:hover {
    flex-direction: column;
    justify-content: center;
    align-items: flex-start;
-  
+
 }
 
 .navbar-left h1 {
@@ -1764,13 +1771,6 @@ a {
       display: flex;
    }
 }
-
-
-
-
-
-
-
 
 input[type="reset"]:disabled,
 input[type="button"].disabled,
@@ -1928,7 +1928,7 @@ button.style3:active,
    text-decoration: none;
    font-size: 24px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
- }
+}
 
 
 /* Banner */
@@ -1987,7 +1987,7 @@ button.style3:active,
    border-bottom: none;
 }
 
-.botonesbaner{
+.botonesbaner {
    width: 100%;
    height: auto;
    display: flex;
@@ -1999,14 +1999,15 @@ button.style3:active,
 
 
 .botonesbaner {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity 0.5s ease-out, transform 0.9s ease-out;
+   opacity: 1;
+   transform: translateY(0) scale(1);
+   transition: opacity 0.5s ease-out, transform 0.9s ease-out;
 }
 
 .botonesbaner.fade-out {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95); /* Ajusta el valor según sea necesario */
+   opacity: 0;
+   transform: translateY(20px) scale(0.95);
+   /* Ajusta el valor según sea necesario */
 }
 
 #banner .buttonizq {
@@ -2031,7 +2032,7 @@ button.style3:active,
    width: 15%;
 }
 
-#banner .buttonder a{
+#banner .buttonder a {
    color: white;
 }
 
@@ -2170,14 +2171,15 @@ button.style3:active,
 }
 
 .bannerizq {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+   opacity: 1;
+   transform: translateY(0) scale(1);
+   transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 
 .bannerizq.fade-out {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95); /* Ajusta el valor según sea necesario */
+   opacity: 0;
+   transform: translateY(20px) scale(0.95);
+   /* Ajusta el valor según sea necesario */
 }
 
 
@@ -2193,12 +2195,13 @@ button.style3:active,
    opacity: 1;
    transform: translateY(0) scale(0.9);
    transition: opacity 1.4s ease-out, transform 0.5s ease-out;
- }
- 
- .bannerder.fade-out {
+}
+
+.bannerder.fade-out {
    opacity: 0;
-   transform: translateY(20px) scale(0.95); /* Ajusta el valor según sea necesario */
- }
+   transform: translateY(20px) scale(0.95);
+   /* Ajusta el valor según sea necesario */
+}
 
 .scene {
    perspective: 800px;
@@ -2217,7 +2220,8 @@ button.style3:active,
    position: absolute;
    width: 200px;
    height: 200px;
-   background-color: #43a1ff55;
+   background-color: #002a54b7;
+   ;
    border: 1px solid #ffffff;
    font-size: 24px;
    display: flex;
