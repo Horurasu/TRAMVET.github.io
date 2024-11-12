@@ -31,11 +31,10 @@
 
 
    <style>
+      .navbar {
 
-.navbar {
-     
-            top: 0;
-         }
+         top: 0;
+      }
 
       @media (min-width: 1280px) {
          .navbar-top {
@@ -94,7 +93,7 @@
             flex-direction: column;
             padding: 0;
             margin: 0;
-            width: 70%;
+            width: 73%;
          }
 
          .navbar-left {
@@ -104,7 +103,7 @@
             padding: 0px;
             margin: 0;
             height: 100%;
-            width: 30%;
+            width: 27%;
             border-right: 1px solid white;
          }
 
@@ -123,6 +122,10 @@
             list-style: none;
             display: flex;
             gap: 15px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
          }
 
          .nav-links li {
@@ -156,10 +159,27 @@
             z-index: 1;
          }
 
+         .dropdown-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Para hacer referencia al submenú */
+         }
+
          .dropdown-container:hover .dropdown {
             display: block;
-            background-color:#074b8f;
+            background-color: #074b8f;
             color: white;
+            position: absolute;
+            top: 100%;
+            /* Siempre se posiciona justo debajo */
+            left: 0;
+            /* Alineado a la izquierda del contenedor */
+            z-index: 10;
+            /* Asegura que esté sobre otros elementos si es necesario */
          }
 
          .sub-menu {
@@ -182,21 +202,21 @@
       }
 
       @media (max-width: 1279px) {
-         
-         .navbar{
+
+         .navbar {
             background-color: #067b9f;
             border: 0px;
          }
-   
-         .navbar-top{
+
+         .navbar-top {
             display: none;
          }
 
-         .navbar-social{
+         .navbar-social {
             display: none;
          }
 
-         .nav-der{
+         .nav-der {
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -205,11 +225,11 @@
             margin-right: 30px;
          }
 
-         .hamburger .bar{
+         .hamburger .bar {
             background-color: white;
          }
 
-         .navbar-left{
+         .navbar-left {
             padding: 10px;
          }
 
@@ -217,94 +237,92 @@
             height: 60px;
          }
 
-         
-      }
 
-      
+      }
    </style>
 
-<script>
-  
-  function debounce(func, wait) {
-    let timeout;
-    return function () {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(context, args), wait);
-    };
-}
+   <script>
 
-// Función para manejar los elementos del navbar
-function handleNavbarElements(scrolled) {
-    if (window.innerWidth >= 1280) {
-        const navbarTop = document.getElementById('navbar-top');
-        const navImage = document.querySelector('.nav-image img');
-        const navbarLeft = document.querySelector('.navbar-left');
-        const navbarRight = document.querySelector('.navbar-right');
+      function debounce(func, wait) {
+         let timeout;
+         return function () {
+            const context = this;
+            const args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+         };
+      }
 
-        if (scrolled) {
-            // Estado scrolleado
-            navbarTop.style.opacity = '0';
-            navbarTop.style.height = '0px';
-            navImage.style.height = '60px';
-            navbarLeft.style.alignItems = 'flex-start';
-            navbarLeft.style.marginLeft = '50px';
-            navbarLeft.style.borderRight = '0px';
-            navbarRight.style.justifyContent = 'flex-start';
-            navbarRight.style.height = '60px';
-            navbarRight.style.borderTop = '0px';
-        } else {
-            // Estado inicial
-            navbarTop.style.opacity = '1';
-            navbarTop.style.height = 'auto';
-            navImage.style.height = '100px';
-            navbarLeft.style.alignItems = 'flex-end';
-            navbarLeft.style.marginLeft = '0px';
-            navbarLeft.style.borderRight = '1px solid white';
-            navbarRight.style.borderTop = '1px solid white';
-        }
-    }
-}
+      // Función para manejar los elementos del navbar
+      function handleNavbarElements(scrolled) {
+         if (window.innerWidth >= 1280) {
+            const navbarTop = document.getElementById('navbar-top');
+            const navImage = document.querySelector('.nav-image img');
+            const navbarLeft = document.querySelector('.navbar-left');
+            const navbarRight = document.querySelector('.navbar-right');
 
-// Inicialización cuando el DOM está listo
-document.addEventListener('DOMContentLoaded', function () {
-    // Forzar scroll al inicio de la página
-    window.scrollTo(0, 0);
-    
-    // Establecer transiciones
-    const navImage = document.querySelector('.nav-image img');
-    if (navImage) {
-        navImage.style.transition = 'height 0.5s ease, margin-left 0.5s ease';
-    }
-    
-    const navbarTop = document.getElementById('navbar-top');
-    if (navbarTop) {
-        navbarTop.style.transition = 'opacity 0.1s ease, height 0.1s ease';
-    }
-    
-    // Inicializar estado del navbar
-    handleNavbarElements(false);
-    
-    // Configurar evento de hamburguesa
-    const hamburger = document.getElementById('hamburger');
-    if (hamburger) {
-        hamburger.addEventListener('click', function () {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    }
-});
+            if (scrolled) {
+               // Estado scrolleado
+               navbarTop.style.opacity = '0';
+               navbarTop.style.height = '0px';
+               navImage.style.height = '60px';
+               navbarLeft.style.alignItems = 'flex-start';
+               navbarLeft.style.marginLeft = '50px';
+               navbarLeft.style.borderRight = '0px';
+               navbarRight.style.justifyContent = 'flex-start';
+               navbarRight.style.height = '60px';
+               navbarRight.style.borderTop = '0px';
+            } else {
+               // Estado inicial
+               navbarTop.style.opacity = '1';
+               navbarTop.style.height = 'auto';
+               navImage.style.height = '100px';
+               navbarLeft.style.alignItems = 'flex-end';
+               navbarLeft.style.marginLeft = '0px';
+               navbarLeft.style.borderRight = '1px solid white';
+               navbarRight.style.borderTop = '1px solid white';
+            }
+         }
+      }
 
-// Manejar evento de scroll
-window.addEventListener('scroll', debounce(function () {
-    handleNavbarElements(window.scrollY > 0);
-}, 100));
+      // Inicialización cuando el DOM está listo
+      document.addEventListener('DOMContentLoaded', function () {
+         // Forzar scroll al inicio de la página
+         window.scrollTo(0, 0);
 
-// Asegurar que la página comience desde arriba al recargar
-window.addEventListener('beforeunload', function () {
-    window.scrollTo(0, 0);
-});
-</script>
+         // Establecer transiciones
+         const navImage = document.querySelector('.nav-image img');
+         if (navImage) {
+            navImage.style.transition = 'height 0.5s ease, margin-left 0.5s ease';
+         }
+
+         const navbarTop = document.getElementById('navbar-top');
+         if (navbarTop) {
+            navbarTop.style.transition = 'opacity 0.1s ease, height 0.1s ease';
+         }
+
+         // Inicializar estado del navbar
+         handleNavbarElements(false);
+
+         // Configurar evento de hamburguesa
+         const hamburger = document.getElementById('hamburger');
+         if (hamburger) {
+            hamburger.addEventListener('click', function () {
+               document.querySelector('.nav-links').classList.toggle('active');
+            });
+         }
+      });
+
+      // Manejar evento de scroll
+      window.addEventListener('scroll', debounce(function () {
+         handleNavbarElements(window.scrollY > 0);
+      }, 100));
+
+      // Asegurar que la página comience desde arriba al recargar
+      window.addEventListener('beforeunload', function () {
+         window.scrollTo(0, 0);
+      });
+   </script>
 
 
    <!-- Navigation -->
@@ -406,7 +424,8 @@ window.addEventListener('beforeunload', function () {
 
             <div class="top-nav">
                <div class="navbar-social">
-                  <a href="https://www.linkedin.com/company/tramvet/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://www.linkedin.com/company/tramvet/" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
                   <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                   <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                   <a href="mailto:tramvet@upsrj.edu.mx"><i class="fas fa-envelope"></i></a>
