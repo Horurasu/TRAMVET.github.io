@@ -22,327 +22,46 @@
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-   <script src="/assets/js/menu.js"></script>
 
 
 </head>
 
 <body id="top">
 
-
-   <style>
-      .navbar {
-
-         top: 0;
-      }
-
-      @media (min-width: 1280px) {
-         .navbar-top {
-            color: white;
-            text-align: center;
-            padding: 0px;
-            opacity: 1;
-            display: flex;
-            justify-content: flex-start;
-            gap: 150px;
-            align-items: center;
-            transition: opacity 0.5s ease, height 0.5s ease;
-         }
-
-         .navbar-social {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-         }
-
-         .navbar-social a {
-            color: white;
-            font-size: 20px;
-            transition: color 0.3s ease;
-         }
-
-         .navbar-social a:hover {
-            color: #ddd;
-         }
-
-         .nav-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px;
-            padding: 0;
-         }
-
-         .navbar {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            background-color: #002a54;
-            color: white;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-         }
-
-         .nav-der {
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            margin: 0;
-            width: 73%;
-         }
-
-         .navbar-left {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0px;
-            margin: 0;
-            height: 100%;
-            width: 27%;
-            border-right: 1px solid white;
-         }
-
-         .navbar-right {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 100px;
-            border-top: 1px solid white;
-            border-right: 0px;
-            width: 100%;
-            height: 60px;
-         }
-
-         .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 15px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-         }
-
-         .nav-links li {
-            position: relative;
-         }
-
-         .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0px;
-            transition: color 0.3s ease;
-         }
-
-         .nav-links a:hover {
-            color: #ddd;
-         }
-
-         .dropdown-container {
-            position: relative;
-         }
-
-         .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #ffffff;
-            width: auto;
-            min-width: max-content;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-         }
-
-         .dropdown-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Para hacer referencia al submenú */
-         }
-
-         .dropdown-container:hover .dropdown {
-            display: block;
-            background-color: #074b8f;
-            color: white;
-            position: absolute;
-            top: 100%;
-            /* Siempre se posiciona justo debajo */
-            left: 0;
-            /* Alineado a la izquierda del contenedor */
-            z-index: 10;
-            /* Asegura que esté sobre otros elementos si es necesario */
-         }
-
-         .sub-menu {
-            display: none;
-            background-color: white;
-            width: auto;
-            min-width: max-content;
-            position: absolute;
-            top: 0;
-            left: 100%;
-            padding: 0px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-         }
-
-         .nav-image image {
-            height: 100px;
-         }
-
-      }
-
-      @media (max-width: 1279px) {
-
-         .navbar {
-            background-color: #067b9f;
-            border: 0px;
-         }
-
-         .navbar-top {
-            display: none;
-         }
-
-         .navbar-social {
-            display: none;
-         }
-
-         .nav-der {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            width: 100%;
-            margin: 10px;
-            margin-right: 30px;
-         }
-
-         .hamburger .bar {
-            background-color: white;
-         }
-
-         .navbar-left {
-            padding: 10px;
-         }
-
-         .nav-image image {
-            height: 60px;
-         }
-
-
-      }
-   </style>
-
-   <script>
-
-      function debounce(func, wait) {
-         let timeout;
-         return function () {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(context, args), wait);
-         };
-      }
-
-      // Función para manejar los elementos del navbar
-      function handleNavbarElements(scrolled) {
-         if (window.innerWidth >= 1280) {
-            const navbarTop = document.getElementById('navbar-top');
-            const navImage = document.querySelector('.nav-image img');
-            const navbarLeft = document.querySelector('.navbar-left');
-            const navbarRight = document.querySelector('.navbar-right');
-
-            if (scrolled) {
-               // Estado scrolleado
-               navbarTop.style.opacity = '0';
-               navbarTop.style.height = '0px';
-               navImage.style.height = '60px';
-               navbarLeft.style.alignItems = 'flex-start';
-               navbarLeft.style.marginLeft = '50px';
-               navbarLeft.style.borderRight = '0px';
-               navbarRight.style.justifyContent = 'flex-start';
-               navbarRight.style.height = '60px';
-               navbarRight.style.borderTop = '0px';
-            } else {
-               // Estado inicial
-               navbarTop.style.opacity = '1';
-               navbarTop.style.height = 'auto';
-               navImage.style.height = '100px';
-               navbarLeft.style.alignItems = 'flex-end';
-               navbarLeft.style.marginLeft = '0px';
-               navbarLeft.style.borderRight = '1px solid white';
-               navbarRight.style.borderTop = '1px solid white';
-            }
-         }
-      }
-
-      // Inicialización cuando el DOM está listo
-      document.addEventListener('DOMContentLoaded', function () {
-         // Forzar scroll al inicio de la página
-         window.scrollTo(0, 0);
-
-         // Establecer transiciones
-         const navImage = document.querySelector('.nav-image img');
-         if (navImage) {
-            navImage.style.transition = 'height 0.5s ease, margin-left 0.5s ease';
-         }
-
-         const navbarTop = document.getElementById('navbar-top');
-         if (navbarTop) {
-            navbarTop.style.transition = 'opacity 0.1s ease, height 0.1s ease';
-         }
-
-         // Inicializar estado del navbar
-         handleNavbarElements(false);
-
-         // Configurar evento de hamburguesa
-         const hamburger = document.getElementById('hamburger');
-         if (hamburger) {
-            hamburger.addEventListener('click', function () {
-               document.querySelector('.nav-links').classList.toggle('active');
-            });
-         }
-      });
-
-      // Manejar evento de scroll
-      window.addEventListener('scroll', debounce(function () {
-         handleNavbarElements(window.scrollY > 0);
-      }, 100));
-
-      // Asegurar que la página comience desde arriba al recargar
-      window.addEventListener('beforeunload', function () {
-         window.scrollTo(0, 0);
-      });
-   </script>
-
-
-   <!-- Navigation -->
    <nav class="navbar">
-      <div class="navbar-left">
-         <a class="nav-image" href="/index.html">
-            <img src="/images/tramvet_lgwt.png" alt="TRAMVET">
-         </a>
-      </div>
+
 
       <div class="nav-der">
+
          <div class="navbar-top" id="navbar-top">
             <div class="navbar-social">
-               <img src="/images/up_santa_rosa_white.png" alt="TRAMVET" style="height: 85px;">
-               <img src="/images/dep_tec_inm.png" alt="TRAMVET" style="height: 65px;">
+               <a class="nav-image" href="https://upsrj.edu.mx">
+                  <img src="/images/up_santa_rosa_white.png" alt="upsrj" style="height: 55px;">
+               </a>
+               <a class="nav-image" href="https://upsrj.edu.mx">
+                  <img src="/images/dep_tec_inm.png" alt="dti" style="height: 55px;">
+               </a>
+               <a class="nav-image" href="https://upsrj.edu.mx">
+                  <img src="/images/e59b7b75-e6c3-4fbf-8777-d52f96bff39c-blanco.png" alt="Didetep"
+                     style="height: 55px;">
+               </a>
+               <a class="nav-image" href="https://concyteq.edu.mx">
+                  <img src="/images/concyteq.png" alt="concyteq" style="height: 55px;">
+               </a>
+               <a class="nav-image" href="https://conahcyt.mx">
+                  <img src="/images/conacyt.png" alt="conacyt" style="height: 40px;">
+               </a>
             </div>
          </div>
 
-         <div class="navbar-right">
+         <script src="/assets/js/scroll.js"></script>
 
+         <div class="navbar-bottom">
+            <div class="navbar-image">
+               <a class="nav-image" href="/index.html">
+                  <img src="/images/tramvet_lgwt.png" href="/index.html" alt="TRAMVET">
+               </a>
+            </div>
             <ul class="nav-links">
                <li><a href="/index.html">Inicio</a></li>
                <li class="dropdown-container">
@@ -415,9 +134,8 @@
                      <li><a href="/pages/projects.html">Ver más...</a></li>
                   </ul>
                </li>
-               <li><a href="/pages/eventos.html">Investigación</a></li>
+               <li><a href="/pages/investigacion.html">Investigación</a></li>
                <li><a href="/pages/miembros.html">Miembros</a></li>
-               <li><a href="/pages/eventos.html">Eventos</a></li>
                <li><a href="/pages/contacto.html">Contacto</a></li>
                <li><a href="/pages/tramites.html">Trámites</a></li>
             </ul>
@@ -437,6 +155,8 @@
                <span class="bar"></span>
                <span class="bar"></span>
             </div>
+
+
          </div>
       </div>
 
@@ -449,8 +169,6 @@
    <section id="banner" data-video="images/banner">
       <div class="inner">
          <div class="banner-separacion">
-
-            <script src="/assets/js/bannerscroll.js"></script>
 
             <div class="bannerizq">
                <h1>Donde la imaginación y la investigación se unen para transformar ideas en realidad</h1>
@@ -477,100 +195,95 @@
          </div>
       </div>
    </section>
-   <div id="main">
-      <script src="/assets/js/scroll.js"></script>
-      <div class="inner">
 
-         <!-- Boxes -->
-         <div class="thumbnails">
-            <div class="box">
-               <div class="inner">
-                  <h3 class="thumbs">DESARROLLO</h3>
-                  <p>Nos dedicamos con fervor al desarrollo de aplicaciones con tecnologías inmersivas, donde
-                     implementamos con destreza las nuevas tecnologías que surgen día a día..</p>
-               </div>
+   <!-- main -->
+
+   <div class="main-content">
+      <div class="bento-container">
+         <section class="hero">
+            <h2>Bienvenido a TRAMVET</h2>
+            <p>Sumando talentos, expandimos los límites de la inmersión</p>
+         </section>
+
+         <section class="services">
+            <div class="service">
+              
+               <i class="fas fa-code"></i>
+               <h4>DESARROLLO</h4>
+               <p>Nos dedicamos con fervor al desarrollo de aplicaciones con tecnologías inmersivas, donde implementamos
+                  con destreza las nuevas tecnologías que surgen día a día..</p>
             </div>
-            <div class="box">
-               <div class="inner">
-                  <h3 class="thumbs">CAPACITACIÓN ACADÉMICA</h3>
-                  <p>Nos especializamos en el desarrollo de aplicaciones educativas con tecnologías inmersivas,
-                     destacando la implementación ágil de las últimas innovaciones tecnológicas.</p>
-               </div>
+            <div class="service">
+                  <i class="fas fa-chalkboard-teacher"></i>
+               <h4>CAPACITACIÓN ACADÉMICA</h4>
+               <p>Nos especializamos en el desarrollo de aplicaciones educativas con tecnologías inmersivas, destacando
+                  la implementación ágil de las últimas innovaciones tecnológicas.</p>
             </div>
-            <div class="box">
-               <div class="inner">
-                  <h3 class="thumbs">INVESTIGACIÓN</h3>
-                  <p>Centramos nuestra pasión en crear aplicaciones para investigación, empleando tecnologías
-                     inmersivas. Integrando de manera hábil las últimas innovaciones, buscamos potenciar el proceso de
-                     investigación de manera eficiente y efectiva.</p>
-               </div>
+            <div class="service">
+               <i class="fas fa-search"></i>
+               <h4>INVESTIGACIÓN</h4>
+               <p>Centramos nuestra pasión en crear aplicaciones para investigación, empleando tecnologías inmersivas.
+                  Integrando de manera hábil las últimas innovaciones, buscamos potenciar el proceso de investigación de
+                  manera eficiente y efectiva.</p>
             </div>
-            <div class="box">
-               <div class="inner">
-                  <h3 class="thumbs">CONSULTORÍA</h3>
-                  <p>Implicación en el área de consultoría especializada en el desarrollo de aplicaciones con
-                     tecnologías inmersivas, asegurando soluciones innovadoras y eficientes.</p>
-               </div>
+            <div class="service">
+                  <i class="fas fa-handshake"></i>
+
+               <h4>CONSULTORÍA</h4>
+               <p>Implicación en el área de consultoría especializada en el desarrollo de aplicaciones con tecnologías
+                  inmersivas, asegurando soluciones innovadoras y eficientes.</p>
             </div>
 
 
+         </section>
 
 
+         <section>
+            <div class="mision">
+              <h3>Misión</h3>
+              <p>Insertar la misión de tu laboratorio aquí. Describir el propósito principal y cómo se busca contribuir al campo de las tecnologías inmersivas.</p>
+            </div>
+            <div class="vision">
+              <h3>Visión</h3>
+              <p>Insertar la visión de tu laboratorio aquí. Describir las aspiraciones a futuro y el impacto que se desea generar en la industria y la sociedad.</p>
+            </div>
+            <div class="valores">
+              <h3>Valores</h3>
+              <ul>
+                <li>Innovación</li>
+                <li>Colaboración</li>
+                <li>Excelencia</li>
+                <li>Inclusión</li>
+                <li>Responsabilidad</li>
+              </ul>
+            </div>
+          </section>
 
-         </div>
 
+         <section class="partners">
+            <h2>Partners</h2>
+            <p>Grandes organizaciones respaldan nuestra misión.</p>
+         </section>
+
+         <section class="union">
+            <section class="companies">
+               <div class="company">
+                  <img src="/images/conacyt-b.png" alt="">
+               </div>
+               <div class="company">
+                  <img src="/images/concyteq-b.png" alt="">
+               </div>
+               <div class="company">
+                  <img src="/images/didetep-b.png" alt="">
+               </div>
+
+            </section>
+         </section>
 
       </div>
    </div>
 
-   <div class="fondo">
-      <section class="departamento">
-         <img src="/images/dti.png" alt="">
-      </section>
-   </div>
 
-   <div class="fondotramvet">
-      <section class="departamento">
-         <img src="/images/tramvet.png" alt="">
-         <h1>TALLER DE REALIDAD AUMENTADA, MUNDOS VIRTUALES Y ELEMENTOS TRIDIMENSIONALES
-         </h1>
-         <h2>En Tramvet, nos sumergimos en el fascinante mundo de las tecnologías inmersivas. Desde la realidad virtual
-            y aumentada hasta la extendida, nos encanta explorar. Y si crees que eso es todo, ¡piénsalo de nuevo!
-            También jugamos con la inteligencia artificial y otras tecnologías sorprendentes que preferimos dejarte
-            descubrir. Siempre estamos buscando la próxima gran cosa para mantenernos a la vanguardia y sorprenderte
-         </h2>
-      </section>
-   </div>
-
-   <div class="fondocarreras">
-      <section class="departamento">
-         <img src="/images/CARRERAS.png" alt="">
-      </section>
-   </div>
-
-   <div class="fondoup">
-      <section class="departamento">
-         <img src="/images/upsrjwhitepng.png" alt="">
-         <h3>El laboratorio TRAMVET surge dentro del Departamento de Tecnologías Inmersivas (DTI), dentro de la UPSRJ en
-            el estado de Querétaro. Desde su creación en 2023 nos destacamos en la aplicación creativa de tecnologías
-            inmersivas como realidad aumentada y mundos virtuales. Colaboramos con entidades y entusiastas, ofreciendo
-            talleres especializados que fomentan la creatividad. En TRAMVET / DTI, vamos más allá de la tecnología,
-            comprometiéndonos con un impacto social positivo en proyectos que mejoran la calidad de vida y la educación.
-            Únete a la vanguardia de la innovación tecnológica en la UPSRJ y Querétaro, donde transformamos ideas en
-            experiencias con la magia de las tecnologías inmersivas.
-         </h3>
-      </section>
-   </div>
-
-   <div class="fondofrase">
-      <section class="departamento">
-         <h1>Todos para uno, juntos para todo
-         </h1>
-
-      </section>
-   </div>
-
-   <!-- Main -->
 
    </div>
    </div>
@@ -583,6 +296,7 @@
             aumentada hasta la extendida, nos encanta explorar. Y si crees que eso es todo, ¡piénsalo de nuevo! También
             jugamos con la inteligencia artificial y otras tecnologías sorprendentes que preferimos dejarte descubrir.
             Siempre estamos buscando la próxima gran cosa para mantenernos a la vanguardia y sorprenderte.</p>
+         <br>
          <h4>Universidad Politecnica de Santa Rosa Jauregui (UPSRJ)</h4>
          <!-- <ul class="icons"><li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -590,6 +304,13 @@
 							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
 						</ul></div> -->
          <h5>© TRAMVET</h5>
+
+         <div class="social-footer">
+            <a href="https://www.linkedin.com/company/tramvet/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:tramvet@upsrj.edu.mx"><i class="fas fa-envelope"></i></a>
+         </div>
    </footer>
    <div class="copyright">
       Site use part of: <a href="https://templated.co/">Templated</a>.
